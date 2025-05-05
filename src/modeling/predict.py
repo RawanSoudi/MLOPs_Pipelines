@@ -19,9 +19,7 @@ from time import time
 
 
 
-def evaluate(X_test, y_test):
-    with open('params.yaml') as f:
-        cfg: Dict[str, Any] = yaml.safe_load(f)
+def evaluate(X_test, y_test,cfg: Dict[str, Any]):
     MODEL_PATH = cfg["evaluate"]["model_path"]
     REPORT_PATH = cfg["evaluate"]["reports_path"]
     logger.info(f"loading model {cfg["evaluate"]["model_name"]}.......")

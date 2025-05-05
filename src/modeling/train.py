@@ -17,9 +17,7 @@ Model_maps = {
     "dt": DT_Estimator
 }
 
-def fetch_data():
-    with open('params.yaml') as f:
-        cfg: Dict[str, Any] = yaml.safe_load(f)
+def fetch_data(cfg: Dict[str, Any]):
     SOURCE = cfg["model"]["processed_data_path"]
     MODELS_DIREC = cfg["model"]["model_path"]
     logger.info(f"Fetching Processed data from {SOURCE}...")
@@ -40,9 +38,7 @@ def fetch_data():
     return data['X_train'], data['y_train'], data['X_test'], data['y_test']
    
 
-def train(x_train,y_train):
-    with open('params.yaml') as f:
-        cfg: Dict[str, Any] = yaml.safe_load(f)
+def train(x_train,y_train,cfg: Dict[str, Any]):
     model =cfg["model"]["model_name"]
     logger.info(f"Training {model}...")
     model_class = Model_maps.get(model.lower())
@@ -52,9 +48,7 @@ def train(x_train,y_train):
     logger.success(f"{model} training completed")      
     return model
 
-def save_model(model):
-    with open('params.yaml') as f:
-        cfg: Dict[str, Any] = yaml.safe_load(f)
+def save_model(model,cfg: Dict[str, Any]):
     os.makedirs(cfg["model"]["model_path"], exist_ok=True)
     model_path = os.path.join(cfg["model"]["model_path"], f"{cfg["model"]["model_name"]}_model.pkl")
     

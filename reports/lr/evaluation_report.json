@@ -4,7 +4,7 @@
     "precision": 0.8036302426415409,
     "recall": 0.8044692737430168,
     "f1_score": 0.8027693955463191,
-    "prediction_time_sec": 0.0,
+    "prediction_time_sec": 0.0010063648223876953,
     "confusion_matrix": [
         [
             91,

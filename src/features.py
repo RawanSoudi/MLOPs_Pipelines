@@ -4,13 +4,10 @@ from tqdm import tqdm
 import typer
 import pandas as pd
 import os
-import yaml  
 from typing import Dict, Any 
 
 
-def create_features():
-    with open('params.yaml') as f:
-        cfg: Dict[str, Any] = yaml.safe_load(f)
+def create_features(cfg: Dict[str, Any]):
     SOURCE = Path(cfg['data']['raw_data_path'])
     input_path = SOURCE / cfg['data']['file_name']
     feature_path = Path(cfg['data']['feature_path'])

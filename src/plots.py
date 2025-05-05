@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 import os
-import yaml  
 from typing import Dict, Any  
 
 def count_plot(col,orientation,data):
@@ -26,9 +25,7 @@ def count_plot(col,orientation,data):
     sns.despine()
 
     
-def create_plots():
-    with open('params.yaml') as f:
-        cfg: Dict[str, Any] = yaml.safe_load(f)
+def create_plots(cfg: Dict[str, Any]):
     DESTINATION = Path(cfg['evaluate']['figure_path'])
     input_path = Path(cfg['data']['feature_path'])
     DESTINATION.mkdir(parents=True, exist_ok=True)

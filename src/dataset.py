@@ -6,14 +6,11 @@ import typer
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import os
-import yaml  
 from typing import Dict, Any  
 
 
 
-def process_data():
-    with open('params.yaml') as f:
-        cfg: Dict[str, Any] = yaml.safe_load(f)
+def process_data(cfg: Dict[str, Any]):
     SOURCE = Path(cfg['data']['interim_data_path'])
     DESTINATION = Path(cfg['data']['processed_data_path'])
     input_path = Path(cfg['data']['feature_path'])
@@ -60,6 +57,6 @@ def process_data():
         logger.error(f"Error during Data Processing: {str(e)}")
         raise typer.Exit(code=1)
 
-process_data()
+
 
 
