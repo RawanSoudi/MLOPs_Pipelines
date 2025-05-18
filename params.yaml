@@ -1,0 +1,23 @@
+data:
+  raw_data_path: data/raw
+  interim_data_path: data/interim
+  processed_data_path: data/processed
+  feature_path : data/interim/Feat_train.csv
+  file_name: train.csv
+  id_column: passengerid
+  test_size: 0.2
+  random_state: 42
+
+model:
+  processed_data_path: data/processed
+  file_name: train.csv
+  model_name: dt
+  model_path: models
+  trained_model_path: models/dt
+
+evaluate:
+  model_name: dt
+  model_path: models
+  trained_model_path: models/dt
+  reports_path: reports
+  figure_path: reports/figures

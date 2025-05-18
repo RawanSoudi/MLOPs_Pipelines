@@ -1,0 +1,63 @@
+stages:
+  features:
+    cmd: python src/features.py
+    deps: 
+    - data/raw/train.csv
+    outs:
+    - data/interim/Feat_train.csv
+    params:
+    - data.raw_data_path
+    - data.file_name
+    - data.feature_path
+  
+  plots:
+    cmd: python src/plots.py
+    deps: 
+    - data/interim/Feat_train.csv
+    outs:
+    - reports/figures
+    params:
+    - evaluate.figure_path
+    - data.feature_path
+  
+  dataset:
+    cmd: python src/dataset.py
+    deps:
+    - data/interim/Feat_train.csv
+    outs:
+    - data/processed/processed_Xtrain.csv
+    - data/processed/processed_Xtest.csv
+    - data/processed/processed_ytrain.csv
+    - data/processed/processed_ytest.csv
+    params:
+    - data.interim_data_path
+    - data.processed_data_path
+    - data.feature_path
+    - data.id_column
+  
+  train:
+    cmd: python src/modeling/train.py
+    deps:
+    - data/processed/processed_Xtrain.csv
+    - data/processed/processed_Xtest.csv
+    - data/processed/processed_ytrain.csv
+    - data/processed/processed_ytest.csv
+    outs:
+    - models/lr/lr_model.pkl
+    params:
+    - model.processed_data_path
+    - model.model_path
+    - data.processed_data_path
+    - model.model_name
+  
+  predict:
+    cmd: python src/modeling/predict.py
+    deps:
+    - models/lr/lr_model.pkl
+    outs:
+    - reports/lr/evaluation_report.json
+    params:
+    - evaluate.model_path
+    - evaluate.reports_path
+    - evaluate.model_name
+    
