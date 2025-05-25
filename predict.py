@@ -17,7 +17,7 @@ print(f"models:/{MODEL_NAME}/{MODEL_ALIAS}")
 model = mlflow.sklearn.load_model(f"models:/{MODEL_NAME}/{MODEL_ALIAS}")
 
 
-test= np.array([[3, 1.0, 50.0, 0, 0, 531.0, 8.05, 146.0, 3.0]]) 
+test= np.array([[5, 2.0, 70.0, 0, 0, 420.0, 9.08, 150.0, 2.0]]) 
 
 y_pred = model.predict(test)
 label_map = {0: "Not Survived", 1: "Survived"}
