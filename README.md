@@ -64,6 +64,10 @@ This repository demonstrates scalable MLOps workflows for the Titanic dataset ht
      
      Build Docker images and deploy on merge to main.
 
+
+
+# Repository Structure
+
 .  
 ├── 1_baseline/                  # Basic script-based pipeline (not configured)
 ├── 2_hydra_config/             # Hydra-managed configs  
