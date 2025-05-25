@@ -70,6 +70,7 @@ This repository demonstrates scalable MLOps workflows for the Titanic dataset ht
 
 .  
 ├── 1_baseline/                  # Basic script-based pipeline (not configured)
+
 ├── 2_hydra_config/             # Hydra-managed configs  
 ├── 3_dvc_data_versioning/       # DVC pipelines  
 ├── 4_mlflow_tracking/           # Experiment logging  
