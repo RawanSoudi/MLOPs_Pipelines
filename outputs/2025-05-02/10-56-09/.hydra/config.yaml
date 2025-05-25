@@ -1,0 +1,22 @@
+pipeline:
+  data:
+    raw_data_path: data/raw
+    interim_data_path: data/interim
+    processed_data_path: data/processed
+    feature_path: ${pipeline.data.interim_data_path}/Feat_train.csv
+    file_name: train.csv
+    id_column: passengerid
+    test_size: 0.2
+    random_state: 42
+  model:
+    processed_data_path: ${pipeline.data.processed_data_path}
+    file_name: ${pipeline.data.file_name}
+    model_name: lr
+    model_path: models
+    trained_model_path: ${pipeline.model.model_path}/${pipeline.model.model_name}
+  evaluate:
+    model_name: ${pipeline.model.model_name}
+    model_path: ${pipeline.model.model_path}
+    trained_model_path: ${pipeline.model.trained_model_path}
+    reports_path: reports
+    figure_path: ${pipeline.evaluate.reports_path}/figures
